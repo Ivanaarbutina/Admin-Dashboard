@@ -1,4 +1,7 @@
 .home {
-  background-color: purple;
-  color: aliceblue;
+  display: flex;
+
+  .homeContainer {
+    flex: 6;
+  }
 }
