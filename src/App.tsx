@@ -3,6 +3,7 @@ import List from "./pages/list/list";
 import Login from "./pages/login/login";
 import New from "./pages/new/new";
 import Single from "./pages/single/single";
+import "./app.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {

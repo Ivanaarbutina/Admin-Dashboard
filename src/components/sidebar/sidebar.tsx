@@ -21,57 +21,69 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
+          <p className="title">MAIN</p>
           <li>
-            <DashboardIcon />
+            <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          <p className="title">LISTS</p>
           <li>
-            <Person2OutlinedIcon />
+            <Person2OutlinedIcon className="icon" />
             <span>Users</span>
           </li>
+
           <li>
-            <CategoryOutlinedIcon />
+            <CategoryOutlinedIcon className="icon" />
             <span>Products</span>
           </li>
+
           <li>
-            <GradingOutlinedIcon />
+            <GradingOutlinedIcon className="icon" />
             <span>Orders</span>
           </li>
+
           <li>
-            <LocalShippingOutlinedIcon />
+            <LocalShippingOutlinedIcon className="icon" />
             <span>Delivery</span>
           </li>
+          <p className="title">USEFUL</p>
           <li>
-            <QueryStatsOutlinedIcon />
+            <QueryStatsOutlinedIcon className="icon" />
             <span>Stats</span>
           </li>
+
           <li>
-            <NotificationsActiveOutlinedIcon />
+            <NotificationsActiveOutlinedIcon className="icon" />
             <span>Notifications</span>
           </li>
+          <p className="title">SERVICE</p>
           <li>
-            <SystemSecurityUpdateGoodOutlinedIcon />
+            <SystemSecurityUpdateGoodOutlinedIcon className="icon" />
             <span>System Health</span>
           </li>
           <li>
-            <LoginOutlinedIcon />
+            <LoginOutlinedIcon className="icon" />
             <span>Logs</span>
           </li>
           <li>
-            <AppSettingsAltOutlinedIcon />
+            <AppSettingsAltOutlinedIcon className="icon" />
             <span>Settings</span>
           </li>
+          <p className="title">USER</p>
           <li>
-            <ContactPageOutlinedIcon />
+            <ContactPageOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
           <li>
-            <LogoutOutlinedIcon />
+            <LogoutOutlinedIcon className="icon" />
             <span>Logout</span>
           </li>
         </ul>
       </div>
-      <div className="botom">color</div>
+      <div className="bottom">
+        <div className="colorOption"></div>
+        <div className="colorOption"></div>
+      </div>
     </div>
   );
 };
