@@ -17,4 +17,12 @@
   --color-blue-500: #00008b;
   --color-black: #333;
   --color-red: red;
+
+  //box-shadows
+  --regular-box-shadow: 1px 2px 2px hsla(224, 5%, 52%, 0.2),
+    2px 4px 4px hsla(224, 5%, 52%, 0.2), 4px 8px 8px hsla(224, 5%, 52%, 0.2),
+    8px 16px 16px hsla(224, 5%, 52%, 0.2),
+    16px 32px 32px hsla(224, 5%, 52%, 0.2);
+
+  --light-box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
 }
