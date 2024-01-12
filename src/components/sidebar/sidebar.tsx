@@ -11,12 +11,15 @@ import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import GradingOutlinedIcon from "@mui/icons-material/GradingOutlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="top">
-        <span className="logo">Ivanaadmin</span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">Ivanaadmin</span>
+        </Link>
       </div>
       <hr />
       <div className="center">
@@ -27,15 +30,18 @@ const Sidebar = () => {
             <span>Dashboard</span>
           </li>
           <p className="title">LISTS</p>
-          <li>
-            <Person2OutlinedIcon className="icon" />
-            <span>Users</span>
-          </li>
-
-          <li>
-            <CategoryOutlinedIcon className="icon" />
-            <span>Products</span>
-          </li>
+          <Link to="/users" style={{ textDecoration: "none" }}>
+            <li>
+              <Person2OutlinedIcon className="icon" />
+              <span>Users</span>
+            </li>
+          </Link>
+          <Link to="/products" style={{ textDecoration: "none" }}>
+            <li>
+              <CategoryOutlinedIcon className="icon" />
+              <span>Products</span>
+            </li>
+          </Link>
 
           <li>
             <GradingOutlinedIcon className="icon" />

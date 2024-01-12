@@ -4,12 +4,13 @@ import Login from "./pages/login/login";
 import New from "./pages/new/new";
 import Single from "./pages/single/single";
 import "./app.scss";
+import "./style/dark.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 
 function App() {
   return (
-    <div className="app">
+    <div className="app dark">
       <BrowserRouter>
         <Routes>
           <Route path="/">
