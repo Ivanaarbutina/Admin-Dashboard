@@ -44,7 +44,7 @@ const DataTable = () => {
       <div style={{ height: 400, width: "100%" }}>
         <DataGrid
           className="datagrid"
-          rows={userRows}
+          rows={data}
           columns={userColumns.concat(actionColumn)}
           initialState={{
             pagination: {

@@ -1,0 +1,34 @@
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input {
+      width: 12.5rem;
+      height: 1.9rem;
+      margin: 0.6rem;
+    }
+
+    button {
+      width: 12.5rem;
+      height: 1.9rem;
+      border: none;
+      background-color: var(--color-purple);
+      color: var(--color-white);
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    span {
+      font-size: 0.7rem;
+      color: var(--color-red);
+      margin-top: 0.6rem;
+    }
+  }
+}
