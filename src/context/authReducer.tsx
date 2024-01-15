@@ -4,7 +4,12 @@ interface AuthState {
   currentUser: UserType | null; // Replace 'User' with the actual user type
 }
 
-const AuthReducer = (state: AuthState, action: any) => {
+export interface AuthAction {
+  type: string;
+  payload?: any;
+}
+
+const AuthReducer = (state: AuthState, action: AuthAction) => {
   switch (action.type) {
     case "LOGIN": {
       return {

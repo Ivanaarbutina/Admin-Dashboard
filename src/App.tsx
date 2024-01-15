@@ -9,12 +9,13 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
 import { ReactNode, useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import { AuthContext } from "./context/authContext";
 // import { AuthContext } from "./context/authContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const currentUser = false;
+  const { currentUser } = useContext(AuthContext);
 
   const RequireAuth = ({ children }: { children: ReactNode }) => {
     return currentUser ? children : <Navigate to="/login" />;
