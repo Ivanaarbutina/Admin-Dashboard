@@ -1,14 +1,40 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { userColumns, userRows } from "../../datatablesource";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { collection, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const DataTable = () => {
-  const [data, setData] = useState(userRows);
+  const [data, setData] = useState<DataType[]>([]);
 
-  const handleDelete = (id: number) => {
-    setData(data.filter((item) => item.id !== id));
+  useEffect(() => {
+    const unsub = onSnapshot(
+      collection(db, "users"),
+      (snapShot) => {
+        let list: DataType[] = [];
+        snapShot.docs.forEach((doc) => {
+          list.push({ id: doc.id, ...doc.data() } as DataType);
+        });
+        setData(list);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  const handleDelete = async (id: number) => {
+    try {
+      await deleteDoc(doc(db, "users", id.toString()));
+      setData(data.filter((item) => item.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const actionColumn = [
@@ -16,7 +42,7 @@ const DataTable = () => {
       field: "action",
       headerName: "Action",
       width: 200,
-      renderCell: (params: any) => {
+      renderCell: (params: { row?: { id: number } }) => {
         return (
           <div className="cellAction">
             <Link to="/users/test" style={{ textDecoration: "none" }}>
@@ -24,7 +50,7 @@ const DataTable = () => {
             </Link>
             <div
               className="deleteButton"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row?.id)}
             >
               Delete
             </div>
@@ -33,6 +59,7 @@ const DataTable = () => {
       },
     },
   ];
+
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -45,7 +72,7 @@ const DataTable = () => {
         <DataGrid
           className="datagrid"
           rows={data}
-          columns={userColumns.concat(actionColumn)}
+          columns={actionColumn} // Assuming `userColumns` is not needed here
           initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 5 },
@@ -60,3 +87,9 @@ const DataTable = () => {
 };
 
 export default DataTable;
+
+// Replace `YourType` with the actual type of your data
+type DataType = {
+  id: number | string;
+  // Other properties...
+};
