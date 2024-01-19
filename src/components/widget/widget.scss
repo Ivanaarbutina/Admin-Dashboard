@@ -37,11 +37,11 @@
       font-size: 0.9rem;
 
       &.positive {
-        color: green;
+        color: var(--color-green);
       }
 
       &.negative {
-        color: red;
+        color: var(--color-red);
       }
     }
 
