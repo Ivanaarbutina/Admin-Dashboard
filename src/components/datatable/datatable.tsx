@@ -8,12 +8,12 @@ import { db } from "../../firebase";
 import { UserType, userColumns } from "../../datatablesource";
 import { GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
 
-const DataTable = () => {
+const DataTable = ({ collectionName }: { collectionName: string }) => {
   const [data, setData] = useState<UserType[]>([]);
 
   useEffect(() => {
     const unsub = onSnapshot(
-      collection(db, "users"),
+      collection(db, collectionName),
       (snapShot) => {
         let list: UserType[] = [];
         snapShot.docs.forEach((doc) => {
@@ -30,11 +30,11 @@ const DataTable = () => {
     return () => {
       unsub();
     };
-  }, []);
+  }, [collectionName]);
 
   const handleDelete = async (id: number) => {
     try {
-      await deleteDoc(doc(db, "users", id.toString()));
+      await deleteDoc(doc(db, collectionName, id.toString()));
       setData(data.filter((item) => item.id !== id));
     } catch (err) {
       console.log(err);

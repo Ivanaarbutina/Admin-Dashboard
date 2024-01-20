@@ -7,18 +7,27 @@ import "./app.scss";
 import "./style/dark.scss";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { productInputs, userInputs } from "./formSource";
-import { ReactNode, useContext } from "react";
+import { ReactNode, useContext, useState } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/authContext";
+import Products from "./pages/products/products";
+import ProductModal from "./pages/products/productModal";
+import { ProductType } from "./pages/products/productData";
 // import { AuthContext } from "./context/authContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-
   const { currentUser } = useContext(AuthContext);
-
+  const [productModal, setProductModal] = useState({
+    isOpen: false,
+    product: null,
+  });
   const RequireAuth = ({ children }: { children: ReactNode }) => {
     return currentUser ? children : <Navigate to="/login" />;
+  };
+
+  const closeProductModal = () => {
+    setProductModal({ isOpen: false, product: null });
   };
 
   return (
@@ -67,7 +76,7 @@ function App() {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <Products />
                   </RequireAuth>
                 }
               />
@@ -75,7 +84,11 @@ function App() {
                 path=":productId"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <ProductModal
+                      isOpen={true}
+                      closeModal={closeProductModal}
+                      product={productModal.product}
+                    />
                   </RequireAuth>
                 }
               />
